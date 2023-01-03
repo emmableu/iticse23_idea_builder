@@ -1,0 +1,132 @@
+\begin{abstract}
+
+
+In computing classrooms, building an open-ended programming project engages students in the process of designing and implementing an idea of their own choice. An explicit planning process has been shown to help students build more complex and ambitious open-ended projects. However, novices encounter difficulties to explore and express ideas during planning. We present Idea Builder, a storyboarding-based planning system to help novices use drawings and images to express their ideas. Idea Builder connects code to plans by showing students animations of code examples (called ``planning examples'') when selecting assets, and connects plans to code by automatically converts a student's storyboard to starter code. Our case studies with two high school coding workshops found that Idea Builder helped students self-perceived as feeling creative and expressive during planning; planning examples encouraged students to plan a mechanic and use a code example more effectively; converting storyboards to starter code were generally perceived useful and time-saving to students. 
+
+
+\end{abstract}
+
+\title{Idea Builder: Motivating Idea Generation and Planning through Storyboarding}
+\maketitle
+
+\section{Introduction}
+
+In computing classrooms, building an open-ended programming project engages students in the process of designing and implementing an idea of their own choice \cite{grover2018what}. It motivates students by placing learning in a real-world context, and encourages students to pursue solutions in the form of self-driven activities, including generating and debating ideas, designing solutions, and implementing their plans \cite{blumenfeld1991motivating}. As a result, open-ended programming projects are widely-used in introductory programming classrooms (e.g., \cite{garcia2015beauty, grover2018what, franklin2020scratch}). Additionally, many popular novice programming environments, such as Scratch \cite{franklin2020scratch}, \snap \cite{garcia2015beauty} and Alice \cite{cooper2000alice}, are widely used to build such open-ended projects in introductory programming classrooms, which lowers the barriers to build complex projects, and help students to build visual, interactive artifacts that they could interact with, increasing their interest in computing \cite{guzdial2015learner}. 
+
+Planning, including generating, choosing ideas, and designing a step-by-step solution, is the first step during open-ended project-making \cite{saad2022review}. An explicit planning process, where students write down the key features and functionalities in their programs, has been shown to help students build more complex and ambitious projects \cite{gonzalez2022investigating}. However, prior work has found that novices frequently experience difficulties to explore and explain their ideas when they primarily use text to write down their ideas during planning, and prefer drawing their ideas on a slide than listing their ideas in texts \cite{limke2022case}, showing that text-focused planning can feel less inspiring and expressive for novice programmers. 
+
+In this work, we present Idea Builder, a system that supports novices to design and plan an open-ended project through storyboarding. The Idea Builder system includes two components: 1) the ``storyboarding'' component, which helps novices to use drawings and images to indicate motions, interactions, and mechanics; and 2) the ``connection'' component, which connects code to plans by showing students animations of code examples (called ``planning examples'') when selecting assets, and connects plans to code by automatically converts a student's storyboard to starter code. 
+
+Our evaluations of students' experience include two parts. 1) We qualitatively evaluated students' experience using only the ``storyboarding'' component during a high school summer internship program, where students used the system with only the storyboarding feature, to plan for an open-ended programming project, and we conducted interviews with students afterward to understand their experience. 2) We also evaluated students' experience using the ``connection'' component by conducting a within-subject comparison study to investigate whether giving students example assets with planning examples increases students' example use rate. Our evaluations found that Idea Builder helped students self-perceived as feeling creative and expressive during planning; planning examples encouraged students to plan a mechanic and use a code example more effectively; converting storyboards to starter code was generally perceived as useful and time-saving to students.
+%TODO: starting from "our evaluations...'' this is actually same as the abstract. 
+
+This work has the following contributions:
+1) The introduction of Idea Builder, a digital storyboarding system that connects planning to students' \snap programming experience. 
+2) A qualitative student study, which shows that students ... % todo
+3) A quantitative \& qualitative study, which shows that assets with gif examples inspired students to plan and use these features during open-ended programming. 
+
+
+
+
+
+
+
+
+
+\section{Related Work}
+
+We first discuss related works on planning and its impact on novices' programming experience, as well as challenges novices encounter during planning. We next discuss storyboarding and examples for open-ended programming, which inspired our design of Idea Builder. 
+
+\textbf{Planning.}
+Many prior works show that an explicit planning process, where students write down the step-by-step plan for their programming project, is helpful towards students' programming outcomes \cite{jin2014evaluation, gonzalez2022investigating}. For example, \citeauthor{gonzalez2022investigating} investigated the impact of using planning sheets on 155 middle school students from an introductory Scratch programming course, and found that the students who used planning sheets to write down their plans prior to programming completed significantly more objectives, and built more complex programming projects, compared to those who did not have access to planning sheets \cite{gonzalez2022investigating}.  \citeauthor{wang2022exploring} conducted an analysis on undergraduate students' open-ended programming, by comparing their planning data extracted from a text-based planning application (called ``PlanIT'') \cite{milliken2021planit}, and compared students' planning data with features they have completed in their projects. The results show that the number of features students listed in their plans is significantly correlated with the number of features achieved in their final programming artifact, showing that students who build more complex plans also tends to produce more ambitious programming projects.
+%Additionally, the ``PlanIT'' text-based planning system also connects students' planned assets to their programming starter code, which has been shown to ... (not sure if needed. ))
+
+However, novice students also encounter many challenges when planning for open-ended programming projects \cite{wang2021novices, thomas2017exploring}, as they frequently lack of skills to express a programming feature they want to build, and may encounter challenges to explore new ideas \cite{wang2021novices}. For example, \citeauthor{thomas2017exploring} conducted a three-year study on a enrichment program that guides African-American middle school students to iteratively design (using a design document), and build complex, open-ended projects for social change, and found that students experienced struggles in expressing game ideas, and articulating user actions and related game functionalities \cite{thomas2017exploring}, which may be due to the limits in traditional, text-based planning. 
+
+
+
+
+\textbf{Storyboarding.} Prior works on personal narrative and storytelling show the potential for storyboarding to help learners become more expressive and creative when expressing their ideas \cite{powell2018telling}. For example, the theory of embodied cognition \cite{wilson2002six} suggests that drawing and imagery connect human thinking with their real-world experience \cite{mcneill2008gesture}, and leads to richer, more creative storytelling experience \cite{powell2018telling, chu2014effects, valguarnera2021eppics}.
+\citeauthor{powell2018telling} conducted a qualitative study on how 17 6-13-year-old children make use of The Telling Board, a storyboarding tool designed for children to use drawings and images to build their own stories, and found that children were highly engaged in the storyboarding process, and felt creative and proud of their artifacts \cite{powell2018telling}. 
+One study investigated the use of storyboard-based planning in computing classrooms -- \citeauthor{limke2022case} conducted a 2-day qualitative case study to investigate 5 pairs of students' planning experience during open-ended project-making, comparing text-based planning to storyboard-based planning using Google Slides. The students expressed feeling more creative when using storyboards, and preferred using storyboards to using texts to plan their projects \cite{limke2022case}. This work shows the potential of using storyboards to support students' planning experience during open-ended project-making. 
+
+
+
+
+\textbf{Examples for Open-Ended Programming.} Novice programmers encounter many challenges when designing and building an open-ended programming project. For example, \citeauthor{wang2021novices} conducted an interview and log data analysis on undergraduate students working on an open-ended programming project, and found that they encounter barriers to exploring and deciding features they want to build in their programs, and experience difficulties to explain a feature they want to build \cite{wang2021novices}. However, prior work on examples to support open-ended programming focus only on the ``programming'' experience. For example, Example Guru is a tool that provides on-demand examples based on students' code states when building open-ended projects in Looking Glass \cite{ichinco2017suggesting}. A study conducted by \citeauthor{ichinco2017suggesting} found that students preferred examples over static documentation, and build projects with more advanced APIs after integrating them from code examples. This shows the potential of using examples to support \textit{programming}. However, while some work discussed students' need for exploration during the \textit{planning} phase of open-ended programming, and the potential for using examples to support idea exploration during planning \cite{limke2022case}, no prior work evaluated the impact of having access to planning examples (i.e., examples provided during project planning), on students' planning and programming experience. 
+
+ 
+
+
+\section{The Idea Builder System}
+% TODO: the image thing: tree at random location, flower, sun
+% images: 1. interface; 2. planning example; 3. code synthesis workflow. 
+\subsection{An Example Usage Scenario}
+
+Ada is making a plan for an open-ended project they need to build in \snap. We explain how Ada may use the ``storyboarding'' and ``connecting'' component in Idea Builder to explore and express their ideas.
+
+\subsubsection{The ``Storyboarding'' Component: } The storyboarding component aims for students to quickly use storyboards to prototype their ideas. Ada can build storyboards in the following two steps: 
+
+\textbf{Step 1: Define Actors.} Ada can start making plans by defining the actors and backgrounds in their game. 
+To save students' time when finding images, apart from uploading, Idea Builder also includes a library of actors and backgrounds for students to search and integrate into their list of assets. 
+An actor maps to a sprite in \snap, and can include multiple costumes. Ada can add costumes by searching for a different image, or edit the costume inside Idea Builder. 
+Later during storyboarding, Ada can click on an actor or a background to copy it to her storyboards. 
+In addition to actors and backdrops, Ada may also use events in Idea Builder to indicate user interactions. There are 6 pre-defined events, which students can directly click to move to their storyboards (e.g., when the green flag is clicked; when the key is pressed;  and when the mouse is clicked)
+
+
+\textbf{Step 2: Make Storyboards.}
+Ada can use the actors and backgrounds she has defined to make storyboards. Ada can use a storyboard to express a specific feature they are interested in building, such as a fruit drops to the ground, or a goat jumping over the platforms. 
+Within each storyboard, students can make several frames to indicate how a mechanic works in action. For example, Figure~\ref{} shows that after a user clicks on the ``play'' button, the flowers will start to fall from the trees. 
+In addition, to express animations and movements, Ada can draw the flower's falling motion by clicking on the ``Add motion'' button, and drawing a trajectory of the flower falling from the tree. 
+As prior work shows that students preferred to combine text and images to express their ideas \cite{limke2022case}, Idea Builder also allows students to add descriptions of each storyboard on the right section named ``Storyboard Notes''.
+
+
+\subsubsection{The ``Connecting'' Component: } 
+The ``connecting'' component of Idea Builder includes two parts: 1) It connects programs to plans by using gifs to generate example animations of a potential feature for an actor, called ``planning examples'' (Figure~\ref{}). 2) It connects plans to programs by synthesizing students' storyboards to a starter code, which they can directly import into \snap. We discuss the two parts below. 
+\textbf{Planning Examples. } The goal of including planning examples is to use animations to help students explore what is possible in \snap, and link those animations to actors that they could directly use in their plans.  As shown in Figure~\ref{xx}, when selecting actors, Ada can click on the ``⨁'' sign to explore a gallery of example actors. Under each example actor, they can view a gif animation of the actor, which shows the potential usage of the actor. For example, a star actor can sometimes be used as many clones of the star sprite changing brightness repetitively over time. 
+\textbf{Synthesizing Starter Code. }  To help students transition easily from planning to programming, a student may click on the ``download code'' button, which they could use to download an XML file, as the starter code of their \snap program.  The code synthesizing feature use human-authored synthesizing rules, which interpret properties such as actors' positions, clones, movements, events, and conversations, and generate code that can reproduce the longest storyboard in a student's plan. As shown in Figure~\ref{fig:show-code}-b, the generated example is sometimes of less quality than a curated, human-authored example. For example, instead of inferring that the trees are at random positions, the generated example used repeated cloning statements to locate trees to the precise locations. The goal of using such auto-generated starter code is to help students get started with all actors and costumes already loaded from their plans, and some starter code that brings actors to the correct size and locations, and therefore saves students' time. 
+ 
+
+
+\subsection{Design Goals}
+
+The design of Idea Builder follows the 7 design principles proposed by Green \cite{alphonce2005green} on building extensible, inter-connected planning systems that support introductory programmers. The ``storyboading'' component of Idea Builder follows the first four principles, which aim for students to express a variety of ideas and designs in the system, to iterate over different ideas, and to build designs that align with their programming tasks \cite{alphonce2005green}. The ``connecting'' component of Idea Builder follows the last three principles, which aim to help students generate different ideas to directly connect their plans to their programming task. 
+
+1)  \emph{Tailored plans}: the system should constrain the design experience to the affordances of the programming environment. Idea Builder helps to constrain the design experience to the affordances of \snap by mapping multiple functionalities of design to the functionalities of programming. For example, the actors and states in Idea Builder map to the sprites and costumes in \snap; the events in Idea Builder maps to a variety of control/event blocks in \snap; the ``add motion'' functionality in Idea Builder maps to movements in \snap; and the ``add speech bubble'' functionality in Idea Builder maps to the ``say'' blocks in \snap.
+2) \emph{Refactoring support}: \citeauthor{alphonce2005green} proposed that design systems should allow rapid prototyping and iterating on plans \cite{alphonce2005green}. Idea Builder allows easy iteration and refactoring of designs by allowing students to quickly copy, modify, and delete different states, actors, backdrops, and frames. 
+3) \emph{Set of relationships}: allowing the expression of a wide range of features/mechanics/object relationships. To allow students to express relationships, such as how actors interact, how different scenes in their project transition to each other, Idea Builder makes use of the Project-Storyboard-Frame hierarchy, meaning, inside each project, there may be multiple storyboards, each represents a single mechanic. Each storyboard makes use of multiple frames, each indicating a scene at a specific time frame. 
+4) \emph{Extensibility}:  allowing users to extend and customize their own designs.  To allow students to extend and customize their own designs, Idea Builder not only allows students to choose their own assets (i.e., by uploading and searching), but also makes use of multiple features, such as motions and actor states, for students to creatively express ideas they want their programs to achieve. 
+5)  \emph{Reverse engineering}: being able to generate elements for planning from code.  The planning examples translate potential features students may build into animations, that students can view, and select the relevant actor into their programs. The planning examples help students to explore and foresee different options in \snap, to explore different ideas, and understand what may be possible to achieve. 
+6)  \emph{Code generation}: being able to generate code from plan. The code generation feature helps students to convert their plans in Idea Builder to a starter code, including actors, sprites' starter positions, and basic interactions. This allows students to quickly transition from planning to programming, without spending repetitive efforts or feeling stuck at getting started. 
+7) \emph{Run-time interactions}: the system should allow users to interact with the generated code at run time. As students may download the starter code at any time during planning, and experiment with it by importing it into \snap, the system allows the students to test, modify and interact with the starter code both during and after planning. 
+
+
+
+
+\section{Student Studies}
+
+\subsection{Study 1: Understanding students' storyboarding experience}
+
+We conducted the first qualitative to understand how students perceive their storyboarding experience. The study took place in a high school internship program. The participants were high school students working on building xxx for teachers. There are xxx participants, xxx (demographics). During the study, xxx (study procedure). After the study, we conducted interviews with the students, asking ... .
+
+We next used thematic analysis to analyze the transcribed interview data ... 
+
+
+\subsection{Study 2: Investigating the impact of planning examples and code generation on students' planning and programming experience.}
+
+
+The goal of the second study is to investigate the impact of the ``connecting'' component on students' planning and programming experience. Specifically, we investigate
+1) whether showing students example usage of an actor helps students become more interested in using the actor in their programs; 
+and 2) how students self-perceived their experience using the starter code generated from idea builder. 
+
+- population: We recruited xx participants from local high schools, for a full-day programming workshop. The workshop is hosted repetitively for 3 Saturdays during 3 consecutive weekends. Students can choose any day to attend the workshop. 
+There are xx females and xx males.
+There are xxx white, ...
+Participants reported different levels of prior CS experience: xxx, xxx, xxx.
+
+- procedure: Each of the Saturdays follow the same procedure. Students first complete a 2-hour \snap introduction, where they follow the instructor to build a game in \snap, while learning basic programming concepts and \snap APIs: clones, 
+
+
+- data collected:
+- analysis method:
+

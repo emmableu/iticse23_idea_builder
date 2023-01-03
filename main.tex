@@ -1,0 +1,31 @@
+% \documentclass[manuscript,screen,review]{acmart}
+
+\documentclass[sigconf]{acmart}
+
+
+\input{packages}
+\input{notation}
+\begin{document}
+
+\makeatletter
+\let\@authorsaddresses\@empty
+\makeatother
+
+\makeatletter
+\def\@copyrightspace{\relax}
+\makeatother
+
+%\onecolumn
+\input{paper}
+
+\bibliographystyle{abbrv}
+    
+\bibliography{sigproc.bib}  % sigproc.bib is the name of the Bibliography in this case
+
+\end{document}
+
+
+
+
+
+
